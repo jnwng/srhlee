@@ -1,0 +1,10 @@
+{
+  "plugins": ["wintersmith-stylus"],
+  "locals": {
+    "url": "http://localhost:8080",
+    "name": "srhlee",
+    "owner": "Sarah Lee",
+    "description": "Portfolio for Sarah Lee",
+    "index_articles": 3
+  }
+}

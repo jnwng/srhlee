@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  include mix 
+  - var projects = _.chain(contents.projects._.directories).map(function(item) {
+  -   return item.index
+  - }).compact().sortBy(function(item) { // compact removes any directories w/o an index
+  -   // sort them by date
+  -   return -item.date
+  - }).value() // and finally take the first 5
+  - console.log(projects)
+  each project in projects
+    article.project
+      header
+        h2
+          a(href=project.url)= project.title
+        mixin images(project.metadata.title)
+
+block scripts
+  mixin masonry()
+

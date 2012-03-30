@@ -1,0 +1,18 @@
+
+mixin images(projectName)
+  - project = contents.projects[projectName]
+  .images
+    - for image in project.images
+      img.image(src="/"+image.filename)
+
+mixin masonry()
+  script(src="/js/jquery-1.7.1.min.js")
+  script(src="/js/jquery.masonry.min.js")
+  :coffeescript
+    $ ->
+      container = $(".images")
+      container.imagesLoaded ()->
+        container.masonry
+          itemSelector: ".image"
+          columnWidth: 100 
+
