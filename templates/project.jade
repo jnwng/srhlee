@@ -7,8 +7,11 @@ block prepend title
 block content
   include mix 
   article.project
-    mixin images(page.title)
-    section.content!= page.html
+    #main
+      #fullview
+      section.content!= page.html
+    div
+      mixin images(page.title)
 
 block scripts
   mixin masonry() 

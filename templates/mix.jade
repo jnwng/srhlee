@@ -1,7 +1,6 @@
 
 mixin images(projectName)
   - project = contents.projects[projectName]
-  #fullview
   .images
     - for image in project.images
       img.image.pieces(src="/"+image.filename)
