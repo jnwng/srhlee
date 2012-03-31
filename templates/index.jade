@@ -14,8 +14,9 @@ block content
       header
         h2
           a(href=project.url)= project.title
-        mixin images(project.metadata.title)
+      mixin images(project.metadata.title)
 
 block scripts
   mixin masonry()
+
 

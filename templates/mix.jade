@@ -1,18 +1,30 @@
 
 mixin images(projectName)
   - project = contents.projects[projectName]
+  #fullview
   .images
     - for image in project.images
-      img.image(src="/"+image.filename)
+      img.image.pieces(src="/"+image.filename)
 
 mixin masonry()
   script(src="/js/jquery-1.7.1.min.js")
   script(src="/js/jquery.masonry.min.js")
   :coffeescript
     $ ->
+      replace_full_image = (image) ->
+        full_src = image.attr("src")
+        fullview = $("#fullview")
+        fullview.empty()
+        $("<img id='full' src=#{full_src}></img>").appendTo fullview
+        $(".images").masonry('reload')
       container = $(".images")
       container.imagesLoaded ()->
         container.masonry
-          itemSelector: ".image"
+          itemSelector: ".pieces"
           columnWidth: 100 
+      $(".image").click () ->
+        replace_full_image $(this)
+      $(".image").first().trigger "click"
+
+
 
